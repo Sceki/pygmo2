@@ -110,3 +110,9 @@ void expose_topologies(py::module &m, py::class_<pagmo::topology> &topo, py::mod
 }
 
 } // namespace pygmo
+
+// Re-register pagmo built-in types inside pygmo.so to fix the macOS dylib void cast registry issue.
+PAGMO_S11N_TOPOLOGY_IMPLEMENT(pagmo::ring)
+PAGMO_S11N_TOPOLOGY_IMPLEMENT(pagmo::fully_connected)
+PAGMO_S11N_TOPOLOGY_IMPLEMENT(pagmo::unconnected)
+PAGMO_S11N_TOPOLOGY_IMPLEMENT(pagmo::free_form)

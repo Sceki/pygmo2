@@ -67,3 +67,6 @@ void expose_r_policies(py::module &m, py::class_<pagmo::r_policy> &r_pol, py::mo
 }
 
 } // namespace pygmo
+
+// Re-register pagmo built-in types inside pygmo.so to fix the macOS dylib void cast registry issue.
+PAGMO_S11N_R_POLICY_IMPLEMENT(pagmo::fair_replace)

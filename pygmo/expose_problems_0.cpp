@@ -198,3 +198,18 @@ void expose_problems_0(py::module &m, py::class_<pagmo::problem> &prob, py::modu
 }
 
 } // namespace pygmo
+
+// Re-register pagmo built-in types inside pygmo.so to fix the macOS dylib void cast registry issue.
+// On macOS, each shared library has its own copy of the Boost.Serialization void cast registry.
+// Calling PAGMO_S11N_PROBLEM_IMPLEMENT here ensures registrations are present in pygmo.so's context.
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::null_problem)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::hock_schittkowski_71)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::decompose)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::inventory)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::ackley)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::lennard_jones)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::dtlz)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::cec2006)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::cec2009)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::cec2014)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::griewank)

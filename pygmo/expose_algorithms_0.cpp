@@ -342,3 +342,21 @@ void expose_algorithms_0(py::module &m, py::class_<pagmo::algorithm> &algo, py::
 }
 
 } // namespace pygmo
+
+// Re-register pagmo built-in types inside pygmo.so to fix the macOS dylib void cast registry issue.
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::bee_colony)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::compass_search)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::cstrs_self_adaptive)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::de)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::de1220)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::mbh)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::moead)
+
+#if defined(PAGMO_WITH_EIGEN3)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::cmaes)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::xnes)
+#endif
+
+#if defined(PAGMO_WITH_IPOPT)
+PAGMO_S11N_ALGORITHM_IMPLEMENT(pagmo::ipopt)
+#endif

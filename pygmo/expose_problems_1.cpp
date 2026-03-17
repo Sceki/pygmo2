@@ -125,3 +125,16 @@ void expose_problems_1(py::module &m, py::class_<pagmo::problem> &prob, py::modu
 }
 
 } // namespace pygmo
+
+// Re-register pagmo built-in types inside pygmo.so to fix the macOS dylib void cast registry issue.
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::rosenbrock)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::translate)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::schwefel)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::zdt)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::golomb_ruler)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::cec2013)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::luksan_vlcek1)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::minlp_rastrigin)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::rastrigin)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::unconstrain)
+PAGMO_S11N_PROBLEM_IMPLEMENT(pagmo::wfg)

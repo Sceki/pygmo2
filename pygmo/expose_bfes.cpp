@@ -11,6 +11,7 @@
 #include <pagmo/batch_evaluators/default_bfe.hpp>
 #include <pagmo/batch_evaluators/member_bfe.hpp>
 #include <pagmo/batch_evaluators/thread_bfe.hpp>
+#include <pagmo/bfe.hpp>
 #include <pagmo/problem.hpp>
 #include <pagmo/threading.hpp>
 #include <pagmo/types.hpp>
@@ -90,3 +91,8 @@ void expose_bfes(py::module &m, py::class_<pagmo::bfe> &b, py::module &b_module)
 }
 
 } // namespace pygmo
+
+// Re-register pagmo built-in types inside pygmo.so to fix the macOS dylib void cast registry issue.
+PAGMO_S11N_BFE_IMPLEMENT(pagmo::default_bfe)
+PAGMO_S11N_BFE_IMPLEMENT(pagmo::thread_bfe)
+PAGMO_S11N_BFE_IMPLEMENT(pagmo::member_bfe)

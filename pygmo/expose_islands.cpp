@@ -59,3 +59,6 @@ void expose_islands(py::module &m, py::class_<pagmo::island> &isl, py::module &i
 }
 
 } // namespace pygmo
+
+// Re-register pagmo built-in types inside pygmo.so to fix the macOS dylib void cast registry issue.
+PAGMO_S11N_ISLAND_IMPLEMENT(pagmo::thread_island)
